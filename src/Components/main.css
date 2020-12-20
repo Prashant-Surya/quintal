@@ -1,0 +1,131 @@
+/* .container{
+
+    margin:100px 500px 500px 400px;
+    font-family: sans-serif;
+    width: 700px;
+    height: 600px;
+    align-self: center;
+    /* border: 2px solid black;   
+    box-sizing: border-box;
+    text-align: center;
+    
+
+} */
+
+.container {
+  position: absolute;
+  width: 1024px;
+  height: 600px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 10px;
+  box-sizing: border-box;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  margin: auto;
+}
+
+.search {
+  margin: 50px 10px 10px 10px;
+  box-sizing: border-box;
+  text-align: center;
+  justify-content: space-between;
+  padding: 5px;
+}
+.search button {
+  margin: auto;
+  margin-top: 10px;
+}
+
+.threedotswave {
+  margin: 150px 10px 10px 450px;
+  text-align: center;
+}
+
+/* .question {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 5px;
+
+  } */
+
+/* .questionBox {
+    position: relative;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    margin-top: 5px;
+    padding: 15px;
+    box-sizing: border-box;
+    background-color: rgb(250, 250, 250);
+  }
+  .answerBtn {
+    position: relative;
+    padding: 10px;
+    background-color: rgb(250, 151, 37);
+    display: inline-block;
+    margin: 10px;
+    outline: none;
+    border: none;
+    font-size: 1em;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+  } */
+.title {
+  position: relative;
+  background-color: #0b6cdb;
+  color: white;
+  padding: 20px;
+  font-size: 1.8em;
+  border-radius: 5px;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.question {
+  font-weight: bold;
+  margin-top: 5px;
+  margin-left: 25px;
+}
+
+.options {
+  /* position: relative; */
+  justify-content: space-between;
+  margin: 10px;
+  cursor: pointer;
+  display: inline;
+  overflow: scroll;
+}
+.nextbtn {
+  align-content: flex-end;
+  margin-top: 150px;
+  margin-right: -150px;
+}
+
+.markanswers {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.submitbtn {
+  align-content: flex-end;
+  margin-top: -30px;
+  margin-right: -150px;
+}
+
+.clicked-container {
+  pointer-events: none;
+}
+
+.showscore{
+
+  background-color: #0b6cdb;
+  color: white;
+  padding: 20px;
+  font-size: 1.8em;
+  border-radius: 5px;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
