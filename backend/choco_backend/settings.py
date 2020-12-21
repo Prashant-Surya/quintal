@@ -10,6 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
+import os
+
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -119,7 +121,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
+PROJECT_DIR=os.path.dirname(__file__)
+
 STATIC_URL = '/static/'
+
+STATIC_ROOT = os.path.join(PROJECT_DIR, 'static_media/')
 
 SENTINENT_API_KEY = "D3B15A49E5F4493D9AF9"
 
