@@ -63,7 +63,7 @@ class Choco extends React.Component {
         }
 
         fetchQuestions = () => {
-            return fetch("http://quintal-server.herokuapp.com/generate/", {
+            return fetch("//quintal-server.herokuapp.com/generate/", {
                 method: "POST",
                 body: JSON.stringify({
                     search_word: this.state.input,
@@ -135,7 +135,8 @@ class Choco extends React.Component {
                 <
                 div className = "title" > QUINTAL < /div> <
                 div className = {
-                    (this.state.clicked || this.state.submit) ? "clicked-container" : "" } >
+                    (this.state.clicked || this.state.submit) ? "clicked-container" : ""
+                } >
                 <
                 div className = "search" > {
                     this.state.showText && ( <
@@ -144,27 +145,31 @@ class Choco extends React.Component {
                         />
                     )
                 } { this.state.showAnimation && < CircleLoader / > } <
-                /div> { /* style={{"marginLeft":"25px","marginTop":"5px","fontWeight":"bold"}} */ } <
+                /div> { / * style = {
+                    { "marginLeft": "25px", "marginTop": "5px", "fontWeight": "bold" } } * / } <
                 div className = "row" >
                 <
                 div className = "question" > {
                     this.state.showQuestions && ( <
                         span style = {
-                            { marginLeft: "10px", fondWeight: "bold", "fontSize": "20px" } } > { this.state.questionNumber }. <
+                            { marginLeft: "10px", fondWeight: "bold", "fontSize": "20px" }
+                        } > { this.state.questionNumber }. <
                         /span>
                     )
                 } <
                 span style = {
-                    { "fontSize": "20px" } } > {
+                    { "fontSize": "20px" }
+                } > {
                     this.state.showQuestions &&
                     this.state.questionBank[this.state.index].question
                 } <
-                /span> <
-                /div> <
+                /span> < /
+                div > <
                 /div> <
                 div className = "row options"
                 style = {
-                    { "marginTop": "15px" } } > {
+                    { "marginTop": "15px" }
+                } > {
                     this.state.showQuestions && (
                         // <Options
                         //   options={this.state.questionBank[this.state.index].options}
@@ -175,7 +180,8 @@ class Choco extends React.Component {
                         <
                         div className = "col-md-10 options"
                         style = {
-                            { "marginLeft": "20px", "marginTop": "5px" } } >
+                            { "marginLeft": "20px", "marginTop": "5px" }
+                        } >
                         <
                         button className = {
                             this.state.one ? "btn btn-secondary" : "btn btn-outline-primary"
@@ -187,13 +193,13 @@ class Choco extends React.Component {
                                     this.state.questionBank[this.state.index].options[0]
                                 );
                             }
-                        } >
-                        { this.state.questionBank[this.state.index].options[0] } <
-                        /button> <
-                        /div> <
+                        } > { this.state.questionBank[this.state.index].options[0] } <
+                        /button> < /
+                        div > <
                         div className = "col-md-10 options"
                         style = {
-                            { "marginLeft": "20px", "marginTop": "5px" } } >
+                            { "marginLeft": "20px", "marginTop": "5px" }
+                        } >
                         <
                         button className = {
                             this.state.two ? "btn btn-secondary" : "btn btn-outline-primary"
@@ -205,13 +211,13 @@ class Choco extends React.Component {
                                     this.state.questionBank[this.state.index].options[1]
                                 );
                             }
-                        } >
-                        { this.state.questionBank[this.state.index].options[1] } <
-                        /button> <
-                        /div> <
+                        } > { this.state.questionBank[this.state.index].options[1] } <
+                        /button> < /
+                        div > <
                         div className = "col-md-10 options"
                         style = {
-                            { "marginLeft": "20px", "marginTop": "5px" } } >
+                            { "marginLeft": "20px", "marginTop": "5px" }
+                        } >
                         <
                         button className = {
                             this.state.three ? "btn btn-secondary" : "btn btn-outline-primary"
@@ -223,13 +229,13 @@ class Choco extends React.Component {
                                     this.state.questionBank[this.state.index].options[2]
                                 );
                             }
-                        } >
-                        { this.state.questionBank[this.state.index].options[2] } <
-                        /button> <
-                        /div> <
+                        } > { this.state.questionBank[this.state.index].options[2] } <
+                        /button> < /
+                        div > <
                         div className = "col-md-10 options"
                         style = {
-                            { "marginLeft": "20px", "marginTop": "5px" } } >
+                            { "marginLeft": "20px", "marginTop": "5px" }
+                        } >
                         <
                         button className = {
                             this.state.four ? "btn btn-secondary" : "btn btn-outline-primary"
@@ -241,15 +247,14 @@ class Choco extends React.Component {
                                     this.state.questionBank[this.state.index].options[3]
                                 );
                             }
-                        } >
-                        { this.state.questionBank[this.state.index].options[3] } <
-                        /button> <
-                        /div> <
+                        } > { this.state.questionBank[this.state.index].options[3] } <
+                        /button> < /
+                        div > <
                         /div>
                     )
                 } <
-                /div> <
-                /div> <
+                /div> < /
+                div > <
                 div className = "nextbtn" >
                 <
                 div className = "row" >
@@ -282,8 +287,8 @@ class Choco extends React.Component {
                         /button>
                     ) : null
                 } <
-                /div> <
-                /div> <
+                /div> < /
+                div > <
                 /div> <
                 div className = "submitbtn" >
                 <
@@ -307,15 +312,16 @@ class Choco extends React.Component {
                         /button>
                     ) : null
                 } <
-                /div> <
-                /div> <
+                /div> < /
+                div > <
                 /div> <
                 div className = "row"
                 style = {
-                    { "marginLeft": "400px", "marginTop": "-150px" } } > {
+                    { "marginLeft": "400px", "marginTop": "-150px" }
+                } > {
                     this.state.showScore ? < Score score = { this.state.score }
-                    />:null} <
-                    /div>
+                    />:null} < /
+                    div >
 
                     <
                     /div>
