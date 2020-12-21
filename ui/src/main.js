@@ -63,7 +63,7 @@ class Choco extends React.Component {
         }
 
         fetchQuestions = () => {
-            return fetch("http://quintal-server.herokuapp.com/generate/", {
+            return fetch("//quintal-server.herokuapp.com/generate/", {
                 method: "POST",
                 body: JSON.stringify({
                     search_word: this.state.input,
