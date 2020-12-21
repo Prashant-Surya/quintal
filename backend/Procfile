@@ -1,0 +1,1 @@
+web: gunicorn choco_backend.wsgi --log-file -
