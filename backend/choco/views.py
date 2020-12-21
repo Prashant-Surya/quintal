@@ -1,11 +1,16 @@
 import json
 
-from django.shortcuts import render
 from django.http import JsonResponse
 from random import shuffle
 
 from choco.sentinent import *
 from .utils import process_entities
+
+
+def health_check(request):
+    return JsonResponse({
+        'status': 'success'
+    })
 
 
 # Create your views here.
