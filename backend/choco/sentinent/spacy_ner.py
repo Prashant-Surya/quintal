@@ -13,4 +13,9 @@ class SpacyNER(object):
             "text": content[:SpacyNER.TEXT_LIMIT]
         }
         response = self.client.get_data(self.URL, payload)
-        return response['results']
+        try:
+            return response['results']
+        except Exception as e:
+            print(e)
+            return {}
+
