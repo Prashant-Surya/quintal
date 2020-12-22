@@ -10,4 +10,8 @@ class WikipediaRetriever(object):
     def fetch_data(self, article):
         payload = {'title': article}  # 'pageid': True, 'language': False, 'filter_key': False}
         response = self.client.get_data(self.URL, payload)
-        return response['results']['summary']
+        try:
+            return response['results']['summary']
+        except Exception as e:
+            return ""
+
