@@ -68,12 +68,12 @@ class Choco extends React.Component {
       },
     }).then(function (response) {
       try {
-          return response.json();
-      } catch(err) {
-          console.log("Error occured", err);
-          return Promise.resolve({
-              data: []
-          })
+        return response.json();
+      } catch (err) {
+        console.log("Error occured", err);
+        return Promise.resolve({
+          data: [],
+        });
       }
     });
   };
@@ -84,9 +84,10 @@ class Choco extends React.Component {
       console.log("Response received", response);
       let data = response.data;
       if (data == null) {
-          data = [];
+        data = [];
       }
-    //   let data = response;
+      //   let data = response;
+      data = data.slice(0, 5);
       this.setState({
         questionBank: data,
         showAnimation: false,
@@ -99,26 +100,28 @@ class Choco extends React.Component {
 
   handleOptions(optionIndex) {
     const answer = this.state.questionBank[this.state.index].answer;
-    const option = this.state.questionBank[this.state.index].options[optionIndex];
+    const option = this.state.questionBank[this.state.index].options[
+      optionIndex
+    ];
     let score = this.state.score;
     let markAnswer = false;
     if (answer == option) {
-        score += 1;
-        markAnswer = true;
+      score += 1;
+      markAnswer = true;
     }
     this.setState({
-        score,
-        selectedOption: optionIndex,
-        clicked: this.state.index == this.state.quesLength - 1 ? false : true,
-        showCorrectAnswer: true,
-        answer: answer,
-        markanswer: markAnswer,
-        submit: this.state.index == this.state.quesLength - 1 ? true : false,
-        responses:
-          this.state.responses < this.state.quesLength
-            ? this.state.responses + 1
-            : this.state.quesLength,
-      });
+      score,
+      selectedOption: optionIndex,
+      clicked: this.state.index == this.state.quesLength - 1 ? false : true,
+      showCorrectAnswer: true,
+      answer: answer,
+      markanswer: markAnswer,
+      submit: this.state.index == this.state.quesLength - 1 ? true : false,
+      responses:
+        this.state.responses < this.state.quesLength
+          ? this.state.responses + 1
+          : this.state.quesLength,
+    });
   }
 
   render() {
@@ -138,54 +141,62 @@ class Choco extends React.Component {
             )}
             {this.state.showAnimation && <CircleLoader />}
           </div>
-          <div className="row">
-            <div className="question">
-              {this.state.showQuestions && (
-                <span
-                  style={{
-                    marginLeft: "10px",
-                    fondWeight: "bold",
-                    fontSize: "20px",
-                  }}>
-                  {this.state.questionNumber}.
-                </span>
-              )}
-              &nbsp;
-              <span style={{ fontSize: "20px" }}>
-                {this.state.showQuestions &&
-                  this.state.questionBank[this.state.index].question}
-              </span>
-            </div>
-        </div>
-          <div className="row options" style={{ marginTop: "15px" }}>
-            {this.state.showQuestions ? ( <>
-              <div>
-                {this.state.questionBank[this.state.index].options.map((current, index)=>
-                    <div
-                    className="col-md-10 options"
-                    style={{ marginLeft: "20px", marginTop: "5px" }}>
-                    <button
-                        className={
-                        this.state.selectedOption === index
-                            ? "btn btn-secondary"
-                            : "btn btn-outline-primary"
-                        }
-                        onClick={() => {
-                            this.handleOptions(index);
-                        }}>
-                        {current}
-                    </button>
-                </div>
-                )}
+          {this.state.showQuestions ? (
+            this.state.questionBank.length == 0 ? (
+              <div className="text-center" style={{fontSize: "20px"}}>
+                  <p> Unfortunately we couldn't find much information for the search word. Please use some words with diversified content in Wikipedia.
+                   </p> <br/><p> Few test words: India, Indian History, World War, World War 2
+                  </p>
+                  <a href="/">Go to Home</a>
               </div>
+            ) : (
+              <>
+                <div className="row">
+                  <div className="question">
+                    <span
+                      style={{
+                        marginLeft: "10px",
+                        fondWeight: "bold",
+                        fontSize: "20px",
+                      }}>
+                      {this.state.questionNumber}.
+                    </span>
+                    ) &nbsp;
+                    <span style={{ fontSize: "20px" }}>
+                      {this.state.questionBank[this.state.index].question}
+                    </span>
+                  </div>
+                </div>
+                <div className="row options" style={{ marginTop: "15px" }}>
+                  <div>
+                    {this.state.questionBank[this.state.index].options.map(
+                      (current, index) => (
+                        <div
+                          className="col-md-10 options"
+                          style={{ marginLeft: "20px", marginTop: "5px" }}>
+                          <button
+                            className={
+                              this.state.selectedOption === index
+                                ? "btn btn-secondary"
+                                : "btn btn-outline-primary"
+                            }
+                            onClick={() => {
+                              this.handleOptions(index);
+                            }}>
+                            {current}
+                          </button>
+                        </div>
+                      )
+                    )}
+                  </div>
+                </div>
               </>
-            ) : null}
-          </div>
+            )
+          ) : null}
         </div>
         <div className="nextbtn">
           <div className="row">
             <div className="col-md-8">
-              
               {this.state.showCorrectAnswer && (
                 <MarkAnswers
                   correct={this.state.markanswer}
@@ -237,10 +248,7 @@ class Choco extends React.Component {
         <div
           className="row"
           style={{ marginLeft: "400px", marginTop: "-150px" }}>
-          
-          {this.state.showScore ? (
-            <Score score={this.state.score} />
-          ) : null}
+          {this.state.showScore ? <Score score={this.state.score} /> : null}
         </div>
       </div>
     );
