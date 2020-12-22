@@ -14,22 +14,9 @@ class MarkAnswers extends React.Component {
       <div className="markanswer">
         {this.props.correct ? (
           <h4>You have marked the correct answer<span>&#10004;</span></h4>
-        ) : (
-          <h4>
-            Correct Answer is:  &emsp;
-            <button
-              className="btn btn-primary"
-              onClick={() => {
-                this.setState({
-                  dis: true,
-                });
-                return false;
-              }}
-            >
-              {this.props.answer}
-            </button>
-          </h4>
-        )}
+        ) : (<>
+            <h4>Correct Answer is: &nbsp;<b>{this.props.answer} </b> </h4>
+        </>)}
       </div>
     );
   }
