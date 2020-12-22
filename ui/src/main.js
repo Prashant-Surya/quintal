@@ -1,12 +1,9 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import ThreeDotsWave from "./Components/animations/ThreeDotsWave";
 import CircleLoader from "./Components/animations/CircleLoader";
 import quizService from "./Components/quizService";
 import "./Components/main.css";
 import SearchBar from "./Components/searchBar";
-import Options from "./Components/options";
-import QuestionBox from "./Components/questions";
 import MarkAnswers from "./Components/markAnswers";
 import Score from "./Components/showScore";
 
@@ -33,10 +30,7 @@ class Choco extends React.Component {
       answer: "",
       markanswer: false,
       showScore: false,
-      one: false,
-      two: false,
-      three: false,
-      four: false,
+      selectedOption: 100,
       quesLength: 0,
     };
     this.handleChange = this.handleChange.bind(this);
@@ -73,49 +67,57 @@ class Choco extends React.Component {
         "Content-Type": "application/json",
       },
     }).then(function (response) {
-      return response.json();
+      try {
+          return response.json();
+      } catch(err) {
+          console.log("Error occured", err);
+          return Promise.resolve({
+              data: []
+          })
+      }
     });
   };
 
   getQuestions = () => {
     this.fetchQuestions().then((response) => {
-      //console.log("Response received", response);
+    // quizService().then((response) => {
+      console.log("Response received", response);
+      let data = response.data;
+      if (data == null) {
+          data = [];
+      }
+    //   let data = response;
       this.setState({
-        questionBank: response.data,
+        questionBank: data,
         showAnimation: false,
         showText: false,
         showQuestions: true,
-        quesLength: response.data.length,
+        quesLength: data.length,
       });
     });
   };
 
-  handleOptions(option) {
+  handleOptions(optionIndex) {
     const answer = this.state.questionBank[this.state.index].answer;
+    const option = this.state.questionBank[this.state.index].options[optionIndex];
+    let score = this.state.score;
+    let markAnswer = false;
     if (answer == option) {
-      this.setState({
-        score: this.state.score + 1,
+        score += 1;
+        markAnswer = true;
+    }
+    this.setState({
+        score,
+        selectedOption: optionIndex,
         clicked: this.state.index == this.state.quesLength - 1 ? false : true,
         showCorrectAnswer: true,
         answer: answer,
-        markanswer: true,
+        markanswer: markAnswer,
         submit: this.state.index == this.state.quesLength - 1 ? true : false,
         responses:
           this.state.responses < this.state.quesLength
             ? this.state.responses + 1
             : this.state.quesLength,
-      });
-    } else
-      this.setState({
-        responses:
-          this.state.responses < this.state.quesLength
-            ? this.state.responses + 1
-            : this.state.quesLength,
-        clicked: this.state.index == this.state.quesLength - 1 ? false : true,
-        submit: this.state.index == this.state.quesLength - 1 ? true : false,
-        showCorrectAnswer: true,
-        markanswer: false,
-        answer: answer,
       });
   }
 
@@ -154,93 +156,30 @@ class Choco extends React.Component {
                   this.state.questionBank[this.state.index].question}
               </span>
             </div>
-          </div>
+        </div>
           <div className="row options" style={{ marginTop: "15px" }}>
-            
-            {this.state.showQuestions && (
-              // <Options
-              //   options={this.state.questionBank[this.state.index].options}
-              //   handleOptions={this.handleOptions}
-              // />
+            {this.state.showQuestions ? ( <>
               <div>
-                <div
-                  className="col-md-10 options"
-                  style={{ marginLeft: "20px", marginTop: "5px" }}>
-                  <button
-                    className={
-                      this.state.one
-                        ? "btn btn-secondary"
-                        : "btn btn-outline-primary"
-                    }
-                    onClick={() => {
-                      this.setState({ one: true });
-                      this.handleOptions(
-                        this.state.questionBank[this.state.index].options[0]
-                      );
-                    }}>
-                    
-                    {this.state.questionBank[this.state.index].options[0]}
-                  </button>
+                {this.state.questionBank[this.state.index].options.map((current, index)=>
+                    <div
+                    className="col-md-10 options"
+                    style={{ marginLeft: "20px", marginTop: "5px" }}>
+                    <button
+                        className={
+                        this.state.selectedOption === index
+                            ? "btn btn-secondary"
+                            : "btn btn-outline-primary"
+                        }
+                        onClick={() => {
+                            this.handleOptions(index);
+                        }}>
+                        {current}
+                    </button>
                 </div>
-                <div
-                  className="col-md-10 options"
-                  style={{ marginLeft: "20px", marginTop: "5px" }}>
-                  <button
-                    className={
-                      this.state.two
-                        ? "btn btn-secondary"
-                        : "btn btn-outline-primary"
-                    }
-                    onClick={() => {
-                      this.setState({ two: true });
-                      this.handleOptions(
-                        this.state.questionBank[this.state.index].options[1]
-                      );
-                    }}>
-                    
-                    {this.state.questionBank[this.state.index].options[1]}
-                  </button>
-                </div>
-                <div
-                  className="col-md-10 options"
-                  style={{ marginLeft: "20px", marginTop: "5px" }}>
-                  <button
-                    className={
-                      this.state.three
-                        ? "btn btn-secondary"
-                        : "btn btn-outline-primary"
-                    }
-                    onClick={() => {
-                      this.setState({ three: true });
-                      this.handleOptions(
-                        this.state.questionBank[this.state.index].options[2]
-                      );
-                    }}>
-                    
-                    {this.state.questionBank[this.state.index].options[2]}
-                  </button>
-                </div>
-                <div
-                  className="col-md-10 options"
-                  style={{ marginLeft: "20px", marginTop: "5px" }}>
-                  <button
-                    className={
-                      this.state.four
-                        ? "btn btn-secondary"
-                        : "btn btn-outline-primary"
-                    }
-                    onClick={() => {
-                      this.setState({ four: true });
-                      this.handleOptions(
-                        this.state.questionBank[this.state.index].options[3]
-                      );
-                    }}>
-                    
-                    {this.state.questionBank[this.state.index].options[3]}
-                  </button>
-                </div>
+                )}
               </div>
-            )}
+              </>
+            ) : null}
           </div>
         </div>
         <div className="nextbtn">
@@ -255,7 +194,6 @@ class Choco extends React.Component {
               )}
             </div>
             <div className="col-md-4">
-              
               {this.state.clicked ? (
                 <button
                   className="btn btn-primary"
@@ -265,10 +203,7 @@ class Choco extends React.Component {
                       clicked: false,
                       questionNumber: this.state.questionNumber + 1,
                       showCorrectAnswer: false,
-                      one: false,
-                      two: false,
-                      three: false,
-                      four: false,
+                      selectedOption: 100,
                     })
                   }>
                   Next Question
