@@ -7,7 +7,6 @@
 - As part of the quiz application we want to use the already available content to gamify the learning experience for users.
 
 #### How does it work:
-- For understanding Sentinent.io platform, we've explored NLP based services to process text content. And we'll other services when shortlisted to the prototype phase.
 
 - When a document is provided or a url of the text based content is provided to our application, we'll analyse the content and generate a quiz completely using the provided data.
 
