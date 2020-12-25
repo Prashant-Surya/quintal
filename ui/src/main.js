@@ -6,6 +6,7 @@ import "./Components/main.css";
 import SearchBar from "./Components/searchBar";
 import MarkAnswers from "./Components/markAnswers";
 import Score from "./Components/showScore";
+import AudioJs from "./Components/audio";
 
 class Choco extends React.Component {
   constructor(props) {
@@ -166,6 +167,9 @@ class Choco extends React.Component {
                       {this.state.questionBank[this.state.index].question}
                     </span>
                   </div>
+                </div>
+                <div style={{margin: "20px"}}>
+                  <AudioJs text={this.state.questionBank[this.state.index].question}/>
                 </div>
                 <div className="row options" style={{ marginTop: "15px" }}>
                   <div>
