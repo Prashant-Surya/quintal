@@ -31,3 +31,8 @@
 #### Voice Services:
 - Text-To-Speech ENG will be used to play the host for announcing questions and options.
 - Automatic Speech Recognition ENG (SG) will be used for capturing user input for the quiz. This is still not integrated into the platform
+
+#### Demo:
+https://quintal-app.herokuapp.com/
+
+**Note:** As we're using heroku free plan for hosting our application it can be taken down when there's no usage. So please give few minutes for heroku bring the instance app after the first request. If failed please try again after few minutes.
