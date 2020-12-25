@@ -1,70 +1,34 @@
-# Getting Started with Create React App
+### Quintal:
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+#### Overview:
 
-## Available Scripts
+- Currently there's a lot of content available in the form of text, images, video and other media forms. A majority of this data is being un-used as this requires a lot of pre-processing and effort to utilize.
 
-In the project directory, you can run:
+- As part of the quiz application we want to use the already available content to gamify the learning experience for users.
 
-### `npm start`
+#### How does it work:
+- For understanding Sentinent.io platform, we've explored NLP based services to process text content. And we'll other services when shortlisted to the prototype phase.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- When a document is provided or a url of the text based content is provided to our application, we'll analyse the content and generate a quiz completely using the provided data.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- This quiz can enhance the learning by engaging users and also collect more data about what kind of topics people are interested to learn about.
 
-### `npm test`
+- This new data available from quiz can be fed into the system for personalized quiz sessions with minimal human intervention.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- In addition to this, we're planning to integrated Voice based services for playing the questions and options as voice for making it more gamified. 
+- For NLP use cases we've used sentient.io platform.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### Sentient.io Services to be used:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+##### NLP Services:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- SpaCy NER based NLP service will be used to identify the primary entities the document is about so a quiz can be generated.
 
-### `npm run eject`
+#### Utility Services:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- Wikipedia Retrieval - We’ve used this service to fetch existing content based on the search word.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+#### Voice Services:
+- Text-To-Speech ENG will be used to play the host for announcing questions and options.
+- Automatic Speech Recognition ENG (SG) will be used for capturing user input for the quiz. This is still not integrated into the platform
