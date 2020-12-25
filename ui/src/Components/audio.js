@@ -36,7 +36,7 @@ export default function AudioJs(props) {
       {audio == null ? (
         <button className="btn btn-dark" onClick={fetchAudio}>Play Audio</button>
       ) : (
-        <ReactAudioPlayer src={`data:audio/mp3;base64,${audio}`} autoPlay controls />
+        <ReactAudioPlayer src={`data:audio/mp3;base64,${audio}`} autoPlay controls title="Question" />
       )}
     </div>
   );
