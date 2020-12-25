@@ -18,7 +18,7 @@
 - For NLP use cases we've used sentient.io platform.
 
 
-#### Sentient.io Services to be used:
+#### Sentient.io Services used:
 
 ##### NLP Services:
 
